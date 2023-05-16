@@ -19,7 +19,7 @@ export async function createPost(postFields) {
 export async function getPosts() {
   try {
     // await finding posts
-    const allPosts = await Post.find({});
+    const allPosts = await Post.find({}).sort({ createdAt: -1 });
     // return posts
     return allPosts;
   } catch (error) {
