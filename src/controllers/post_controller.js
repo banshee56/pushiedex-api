@@ -1,22 +1,52 @@
 import Post from '../models/post_model';
 
 export async function createPost(postFields) {
-  // await creating a post
-  // return post
+  const post = new Post();
+  post.title = postFields.title;
+  post.coverUrl = postFields.coverUrl;
+  post.content = postFields.content;
+  post.tags = postFields.tags;
+
+  try {
+    // await creating a post
+    const newPost = await post.save();
+    // return post
+    return newPost;
+  } catch (error) {
+    throw new Error(`create post error: ${error}`);
+  }
 }
 export async function getPosts() {
-  // await finding posts
-  // return posts
+  try {
+    // await finding posts
+    const allPosts = await Post.find({});
+    // return posts
+    return allPosts;
+  } catch (error) {
+    throw new Error(`get all posts error: ${error}`);
+  }
 }
 export async function getPost(id) {
-  // await finding one post
-  // return post
+  try {
+    const onePost = await Post.findById(id);
+    return onePost;
+  } catch (error) {
+    throw new Error(`get one post error: ${error}`);
+  }
 }
 export async function deletePost(id) {
-  // await deleting a post
-  // return confirmation
+  try {
+    const post = await Post.findByIdAndDelete(id);
+    return post;
+  } catch (error) {
+    throw new Error(`get one post error: ${error}`);
+  }
 }
 export async function updatePost(id, postFields) {
-  // await updating a post by id
-  // return *updated* post
+  try {
+    const post = await Post.findByIdAndUpdate(id, postFields);
+    return post;
+  } catch (error) {
+    throw new Error(`get one post error: ${error}`);
+  }
 }
