@@ -16,16 +16,18 @@ export async function createPost(postFields) {
     throw new Error(`create post error: ${error}`);
   }
 }
+
 export async function getPosts() {
   try {
     // await finding posts
-    const allPosts = await Post.find({}).sort({ createdAt: -1 });
+    const allPosts = await Post.find({});
     // return posts
     return allPosts;
   } catch (error) {
     throw new Error(`get all posts error: ${error}`);
   }
 }
+
 export async function getPost(id) {
   try {
     const onePost = await Post.findById(id);
