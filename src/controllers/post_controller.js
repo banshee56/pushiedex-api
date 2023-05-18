@@ -6,6 +6,10 @@ export async function createPost(postFields) {
   post.coverUrl = postFields.coverUrl;
   post.content = postFields.content;
   post.tags = postFields.tags;
+  post.gender = postFields.gender;
+  post.height = postFields.height;
+  post.weight = postFields.weight;
+  console.log(postFields);
 
   try {
     // await creating a post
