@@ -14,7 +14,7 @@ const handleCreate = async (req, res) => {
     res.json(result); // send back the result
     // res.json({ message: 'creating post' });
   } catch (error) {
-    res.status(500).json({ error }); // or catch the error and send back an error
+    res.status(404).json({ error }); // or catch the error and send back an error
   }
 };
 
@@ -24,18 +24,17 @@ const handleFetchAll = async (req, res) => {
     res.json(result); // send back the result
     // res.json({ message: 'fetching all posts' });
   } catch (error) {
-    res.status(500).json({ error }); // or catch the error and send back an error
+    res.status(404).json({ error }); // or catch the error and send back an error
   }
 };
 
 const handleFetch = async (req, res) => {
   try {
-    console.log();
     const result = await Posts.getPost(req.params.id);
     res.json(result); // send back the result
     // res.json({ message: 'fetching 1 post' });
   } catch (error) {
-    res.status(500).json({ error }); // or catch the error and send back an error
+    res.status(404).json({ error }); // or catch the error and send back an error
   }
 };
 
@@ -45,7 +44,7 @@ const handleUpdate = async (req, res) => {
     res.json(result); // send back the result
     // res.json({ message: 'updating post' });
   } catch (error) {
-    res.status(500).json({ error }); // or catch the error and send back an error
+    res.status(404).json({ error }); // or catch the error and send back an error
   }
 };
 
@@ -55,7 +54,7 @@ const handleDelete = async (req, res) => {
     res.json(result); // send back the result
     // res.json({ message: 'deleting post' });
   } catch (error) {
-    res.status(500).json({ error }); // or catch the error and send back an error
+    res.status(404).json({ error: error.toString() }); // or catch the error and send back an error
   }
 };
 

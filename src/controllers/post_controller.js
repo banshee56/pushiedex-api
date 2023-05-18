@@ -35,6 +35,9 @@ export async function getPosts() {
 export async function getPost(id) {
   try {
     const onePost = await Post.findById(id);
+    if (!onePost) {
+      throw new Error('Post Already Deleted');
+    }
     return onePost;
   } catch (error) {
     throw new Error(`get one post error: ${error}`);
@@ -50,7 +53,7 @@ export async function deletePost(id) {
 }
 export async function updatePost(id, postFields) {
   try {
-    const post = await Post.findByIdAndUpdate(id, postFields);
+    const post = await Post.findByIdAndUpdate(id, postFields, { new: true });
     return post;
   } catch (error) {
     throw new Error(`get one post error: ${error}`);
